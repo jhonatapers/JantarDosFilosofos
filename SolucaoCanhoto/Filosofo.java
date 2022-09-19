@@ -26,6 +26,8 @@ public class Filosofo extends Thread {
         emAcao = false;
     }
 
+
+    
     public void pensa() {
 
         Semaphore sEmAcao = new Semaphore(0);
@@ -102,7 +104,7 @@ public class Filosofo extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < qtdJanta; i++) {
-            pensa();
+            //pensa();
             janta();
         }
     }

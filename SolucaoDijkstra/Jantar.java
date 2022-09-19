@@ -19,7 +19,7 @@ public class Jantar {
         }
 
         for (int i = 0; i < FIL; i++) {
-            filosofos[i] = new Filosofo(i, mutex, forks[i], forks[(i + 1) % (FIL)], FIL);
+            filosofos[i] = new Filosofo(i, mutex, forks[i], forks[(i + 1) % (FIL)], QTD_JANTAS, FIL);
         }
 
 
@@ -27,13 +27,15 @@ public class Jantar {
 
         PrintaAcaoUtil.printaCabecalho();
 
-        for(int i = 0; i < QTD_JANTAS; i ++){
-            for (int f = 0; f < FIL; f++) {
-                filosofos[f].pensa();
-                PrintaAcaoUtil.printaAcao(f, true, FIL);
+        for (int i = 0; i < FIL; i++) {
+            filosofos[i].start();
+        }
 
-                filosofos[f].janta(); 
-                PrintaAcaoUtil.printaAcao(f, false, FIL);
+        for (int i = 0; i < FIL; i++) {
+            try {
+                filosofos[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         

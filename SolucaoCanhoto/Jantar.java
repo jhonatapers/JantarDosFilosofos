@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 public class Jantar {
     private static final int FIL = 5;
 
-    private static final int QTD_JANTAS = 10;
+    private static final int QTD_JANTAS = 2;
 
     public static void main(String[] args) {
 

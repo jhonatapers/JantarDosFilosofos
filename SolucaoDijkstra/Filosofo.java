@@ -2,7 +2,7 @@ package SolucaoDijkstra;
 
 import java.util.concurrent.Semaphore;
 
-public class Filosofo {
+public class Filosofo extends Thread{
 
     private int idFilosofo;
 
@@ -10,17 +10,21 @@ public class Filosofo {
 
     private Semaphore lFork, rFork;
 
+    private int qtdJanta;
+
     private int qtdFilosofos;
 
     private Boolean emAcao;
 
-    public Filosofo(int idFilosofo, Semaphore mutex, Semaphore rFork, Semaphore lFork, int qtdFilosofos) {
+    public Filosofo(int idFilosofo, Semaphore mutex, Semaphore rFork, Semaphore lFork,int qtdJanta, int qtdFilosofos) {
         this.idFilosofo = idFilosofo;
 
         this.mutex = mutex;
 
         this.rFork = rFork;
         this.lFork = lFork;
+
+        this.qtdJanta = qtdJanta;
 
         this.qtdFilosofos = qtdFilosofos;
     }
@@ -103,6 +107,14 @@ public class Filosofo {
 
         rFork.release();
         lFork.release();
+    }
+
+    @Override
+    public void run(){
+        for(int i =0; i< qtdJanta; i++){
+            //pensa();
+            janta();
+        }
     }
 
 }
