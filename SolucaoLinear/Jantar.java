@@ -17,7 +17,7 @@ public class Jantar {
         }
 
         for (int i = 0; i < FIL; i++) {
-            filosofos[i] = new Filosofo(forks[i], forks[(i + 1) % (FIL)]);
+            filosofos[i] = new Filosofo(i, forks[i], forks[(i + 1) % (FIL)], FIL);
         }
 
 
@@ -27,11 +27,7 @@ public class Jantar {
 
         for(int i = 0; i < QTD_JANTAS; i ++){
             for (int f = 0; f < FIL; f++) {
-                filosofos[f].pensa();
-                PrintaAcaoUtil.printaAcao(f, true, FIL);
-
-                filosofos[f].janta(); 
-                PrintaAcaoUtil.printaAcao(f, false, FIL);
+                filosofos[f].janta();                 
             }
         }
         
